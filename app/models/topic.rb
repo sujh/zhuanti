@@ -3,5 +3,5 @@ class Topic
   include Mongoid::Timestamps
   #include Mongoid::Attributes::Dynamic
   field :data, type: Hash
-  field :published, type: :boolean, default: true
+  field :published, type: :boolean, default: false
 end

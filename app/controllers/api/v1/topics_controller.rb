@@ -7,7 +7,7 @@ class Api::V1::TopicsController < Api::V1::BaseController
   end
 
   def index
-    docs = Topic.all
+    docs = Topic.asc("created_at")
     render_ok docs
   end
 

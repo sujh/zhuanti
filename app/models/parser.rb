@@ -14,7 +14,8 @@ class Parser
       sheet = Spreadsheet.open(file).worksheet(0)
       sheet.each_with_index.with_object([]) do |(row, idx), arr|
         next if idx.zero?
-        arr << {time: row[0], title: row[1], content: row[2].split(delimiter)}
+        content = row[2] ? row[2].split(delimiter).map(&:strip) : []
+        arr << {time: row[0], title: row[1], content: content }
       end
     end
   end

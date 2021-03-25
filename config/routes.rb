@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
       controller :parsers do
         post :parse_guests
-        post :parse_topics
+        post :parse_agendas
       end
 
     end
