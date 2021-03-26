@@ -1,0 +1,11 @@
+default: &default
+
+development:
+  <<: *default
+  redis_uri: "redis://172.19.30.160/6"
+
+test:
+  <<: *default
+
+production:
+  <<: *default

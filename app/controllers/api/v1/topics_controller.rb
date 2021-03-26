@@ -1,5 +1,6 @@
 class Api::V1::TopicsController < Api::V1::BaseController
   before_action :load_doc, only: [:update, :show, :destroy, :publish, :unpublish]
+  skip_before_action :authenticate, only: [:show]
 
   def create
     topic = Topic.create!(params.slice(:data).permit!)

@@ -73,6 +73,7 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.8.9)
       concurrent-ruby (~> 1.0)
+    jwt (2.2.2)
     listen (3.4.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -136,6 +137,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redis (4.2.5)
     ruby-ole (1.2.12.2)
     spreadsheet (1.2.8)
       ruby-ole
@@ -161,11 +163,13 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
+  jwt
   listen (~> 3.3)
   mongoid (~> 7.2)
   puma (~> 5.0)
   rack-cors
   rails (~> 6.1.3)
+  redis
   spreadsheet
   spring
   tzinfo-data

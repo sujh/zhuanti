@@ -7,6 +7,8 @@ Rails.application.routes.draw do
         patch :unpublish, on: :member
       end
 
+      resource :token, only: [:show]
+
       controller :parsers do
         post :parse_guests
         post :parse_agendas
