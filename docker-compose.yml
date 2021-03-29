@@ -4,8 +4,13 @@ services:
     build: .
     command: 'puma -C config/puma.rb -S tmp/puma_stats.txt --control-url tcp://0.0.0.0:9191'
     ports:
-      - 3001:3000
+      - 3000:3000
     volumes:
       - .:/zhuanti_app
     stdin_open: true
     tty: true
+
+networks:
+  default:
+    external:
+      name: dev

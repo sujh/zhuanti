@@ -1,7 +1,7 @@
 FROM ruby:2.7.2-alpine
 
 RUN sed -i "s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g" /etc/apk/repositories \
- && apk add --no-cache build-base tzdata git
+ && apk add --no-cache build-base tzdata git shared-mime-info
 
 ARG RAILS_ENV=development
 
