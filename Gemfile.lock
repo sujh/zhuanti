@@ -77,6 +77,12 @@ GEM
     listen (3.4.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
+    lograge (0.11.2)
+      actionpack (>= 4)
+      activesupport (>= 4)
+      railties (>= 4)
+      request_store (~> 1.0)
+    logstash-event (1.2.02)
     loofah (2.9.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -138,6 +144,8 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     redis (4.2.5)
+    request_store (1.5.0)
+      rack (>= 1.4)
     ruby-ole (1.2.12.2)
     spreadsheet (1.2.8)
       ruby-ole
@@ -165,6 +173,8 @@ DEPENDENCIES
   byebug
   jwt
   listen (~> 3.3)
+  lograge
+  logstash-event
   mongoid (~> 7.2)
   puma (~> 5.0)
   rack-cors

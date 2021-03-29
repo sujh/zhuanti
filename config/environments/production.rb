@@ -71,6 +71,20 @@ Rails.application.configure do
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
+  elsif ENV['RAILS_LOG_TO_KIBANA'].present?
+    config.lograge.enabled = true
+    config.lograge.formatter = Lograge::Formatters::Logstash.new
+    config.lograge.custom_options = lambda do |event|
+      exceptions = %w(controller action format id)
+      {
+          params: event.payload[:params].except(*exceptions),
+          exception_backtrace: event.payload[:exception_object]&.backtrace&.join
+      }
+    end
+    logger = ActiveSupport::TaggedLogging.new(ActiveSupport::Logger.new("/data/logs/zhuanti_production.log"))
+
+    config.logger = logger
+    config.colorize_logging = false
   end
 
   # Inserts middleware to perform automatic connection switching.

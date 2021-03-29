@@ -9,3 +9,4 @@ test:
 
 production:
   <<: *default
+  redis_uri: "redis://nbd-cache1:6379/13"

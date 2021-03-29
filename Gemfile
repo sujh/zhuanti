@@ -36,3 +36,5 @@ gem 'mongoid', '~> 7.2'
 gem 'spreadsheet'
 gem 'jwt'
 gem 'redis'
+gem "lograge"
+gem "logstash-event"
