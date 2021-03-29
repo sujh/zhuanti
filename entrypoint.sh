@@ -10,14 +10,10 @@ if [ "$RAILS_ENV" == "development" ]; then
 #  yarn config set yarn-offline-mirror-pruning true
 #  yarn install --offline
 elif [ "$RAILS_ENV" == "production" ]; then
-  mv config/database.yml.template config/database.yml
+  mv config/mongoid.yml.template config/mongoid.yml
 
   mkdir -p /data/logs
   touch /data/logs/zhuanti_production.log
-
-  yarn install
-
-  rake assets:precompile
 fi
 
 # Then exec the container's main process (what's set as CMD in the Dockerfile).

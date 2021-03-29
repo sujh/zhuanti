@@ -1,0 +1,31 @@
+default: &default
+  clients:
+    default: &clients_default
+      hosts:
+        - localhost:27017
+
+development:
+  <<: *default
+  clients:
+    default:
+      <<: *clients_default
+      database: zhuanti_app_development
+test:
+  <<: *default
+  clients:
+    default:
+      <<: *clients_default
+      database: zhuanti_app_test
+      options:
+        read:
+          mode: :primary
+        max_pool_size: 1
+
+production:
+  <<: *default
+  clients:
+    default:
+      <<: *clients_default
+      database: zhuanti_app
+      hosts:
+        - little-mongo:27017
