@@ -15,9 +15,12 @@ class Api::V1::TokensController < Api::V1::BaseController
     def staff_session
       @session ||= begin
         session_id = request.cookies["_nbd_session_id"]
-        logger.info("session_id is #{session_id}.")
-        return if session_id.nil?
-        Marshal.load($redis.get(session_id))
+        logger.info("cookie is #{request.cookies}.")
+        if session_id and session_str = $redis.get(session_id)
+          Marshal.load(session_str)
+        else
+          nil
+        end
       end
     end
 
