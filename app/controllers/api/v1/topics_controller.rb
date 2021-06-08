@@ -3,7 +3,7 @@ class Api::V1::TopicsController < Api::V1::BaseController
   skip_before_action :authenticate, only: [:show]
 
   def create
-    topic = Topic.create!(params.slice(:data).permit!)
+    topic = Topic.create!(params.slice(:data_draft).permit!)
     render_ok(topic)
   end
 
@@ -13,7 +13,7 @@ class Api::V1::TopicsController < Api::V1::BaseController
   end
 
   def update
-    @doc.update(params.slice(:data).permit!)
+    @doc.update(params.slice(:data_draft).permit!)
     render_ok @doc
   end
 
@@ -32,7 +32,11 @@ class Api::V1::TopicsController < Api::V1::BaseController
   end
 
   def publish
-    @doc.update(published: true)
+    if @doc.data_draft.present?
+      @doc.update(published: true, data: @doc.data_draft)
+    else
+      @doc.update(published: true)
+    end
     render_ok @doc
   end
 
